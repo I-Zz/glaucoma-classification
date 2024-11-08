@@ -55,43 +55,27 @@ This section describes the steps performed for preprocessing the CSV data, which
    - The NRG class is downsampled to match the desired ratio with the RG class. For example, a 2:1 ratio between RG and NRG is used in the example provided.
    - This function ensures that the training dataset has an equal or controlled distribution of both classes.
 
-4. **Resolving Labeling Disagreements**
-   - The function `resolve_label_disagreements()` handles disagreements between labels assigned by multiple graders (G1, G2, G3).
-   - If labels from the third grader (G3) are available, they are used as the final label. If not, the labels from the first and second graders (G1 and G2) are compared.
-   - If G1 and G2 agree on a feature, that label is used; otherwise, `NaN` is assigned to the feature.
-
-5. **Filling Missing Values**
-   - The function `fill_nan_with_most_frequent()` is used to fill any `NaN` values with the most frequent value for each feature.
-   - This ensures that missing data does not affect model performance during training and testing.
-
-6. **Splitting the Dataset for Training and Testing**
+4. **Splitting the Dataset for Training and Testing**
    - The dataset is split into training and testing sets using `train_test_split()` from `sklearn.model_selection`.
    - Two separate splits are performed:
      - **Referable Glaucoma (RG)**: The RG instances are split into a training set (`train_rg`) and a test set (`test_rg`).
      - **Non-Referable Glaucoma (NRG)**: The NRG instances are split to ensure that the test set contains a balanced number of RG and NRG cases.
    - The training and testing sets are shuffled to ensure randomness.
 
-7. **Saving the Processed Data**
+5. **Saving the Processed Data**
    - The preprocessed training and testing sets are saved into CSV files for later use in model training and evaluation.
    - The following files are saved:
-     - `10_features_no_mask_train.csv`: Contains the training data for classification based on 10 features.
-     - `10_features_no_mask_test.csv`: Contains the testing data for classification based on 10 features.
      - `glaucoma_no_mask_train.csv`: Contains the training data for the binary glaucoma classification.
      - `glaucoma_no_mask_test.csv`: Contains the testing data for the binary glaucoma classification.
-
-8. **Kaggle API Integration**
-   - The notebook sets the `KAGGLE_USERNAME` and `KAGGLE_KEY` environment variables to allow interaction with the Kaggle API for downloading datasets and uploading results, ensuring seamless integration with Kaggle notebooks.
-
 
 
 ### Color Contrast Enhancement
 This section describes the image preprocessing steps that are applied to enhance the contrast and prepare the images for further analysis or model training. The preprocessing steps include contrast enhancement using CLAHE (Contrast Limited Adaptive Histogram Equalization), trimming margins, resizing the images while maintaining the aspect ratio, and saving the processed images to a new folder.
 
-1. **CLAHE (Contrast Limited Adaptive Histogram Equalization) Enhancement**
-   - The function `apply_clahe()` is used to enhance the contrast of each image by applying CLAHE on the individual color channels (Red, Green, and Blue).
-   - CLAHE is an effective method to improve the contrast of retinal images, especially for images with uneven lighting conditions.
-   - The image is first converted from RGB to BGR format (for compatibility with OpenCV), and CLAHE is applied to each channel separately.
-   - After applying CLAHE, the channels are merged back and converted back to RGB.
+1. **Configuration**
+   - The CSV files (`glaucoma_no_mask_train.csv` and `glaucoma_no_mask_test.csv`) are used to load the image paths for processing. These CSV files contain the paths to the retinal images that need to be preprocessed.
+   - The processed images are saved to a directory (`/kaggle/working/preprocessed_images`) within the Kaggle environment.
+   - The output image size is configurable via the `output_size` parameter, which is set to 2000 pixels in this case.
 
 2. **Trimming Margins and Resizing**
    - The function `trim_and_resize()` is used to remove unnecessary margins from the images. This helps focus on the important parts of the image while discarding the irrelevant areas.
@@ -99,27 +83,24 @@ This section describes the image preprocessing steps that are applied to enhance
    - The image is then cropped to remove the empty borders based on the computed row and column sums.
    - After trimming, the image is resized to a specified output size while maintaining its aspect ratio. The image is resized using a high-quality Lanczos filter, and if necessary, the image is padded with a black border to meet the target size.
 
-3. **Processing and Saving Images**
+3. **CLAHE (Contrast Limited Adaptive Histogram Equalization) Enhancement**
+   - The function `apply_clahe()` is used to enhance the contrast of each image by applying CLAHE on the individual color channels (Red, Green, and Blue).
+   - CLAHE is an effective method to improve the contrast of retinal images, especially for images with uneven lighting conditions.
+   - The image is first converted from RGB to BGR format (for compatibility with OpenCV), and CLAHE is applied to each channel separately.
+   - After applying CLAHE, the channels are merged back and converted back to RGB.
+
+4. **Processing and Saving Images**
    - A batch of images is processed by reading them from the specified paths, applying the CLAHE enhancement, trimming, and resizing.
    - The processed images are then saved to a specified output directory. If the image has already been processed and saved, it is skipped.
    - The output folder structure is created if it doesn't already exist. Each processed image is saved in the designated folder, and a progress bar is displayed during processing using `tqdm`.
 
-4. **Dataset Creation for Kaggle**
-   - After processing and saving the images, the dataset is prepared for uploading to Kaggle using the Kaggle API.
-   - The function `create_dataset()` generates the necessary metadata for the dataset and creates a dataset on Kaggle by packaging the images into a zip file.
-   - The dataset's title, ID, and license information (CC0-1.0) are specified in the metadata.
-   - The dataset is then uploaded to Kaggle using the `KaggleApi` class from the Kaggle Python library. Ensure you have valid Kaggle API credentials set up in the environment.
-
-5. **Configuration**
-   - The CSV files (`glaucoma_no_mask_train.csv` and `glaucoma_no_mask_test.csv`) are used to load the image paths for processing. These CSV files contain the paths to the retinal images that need to be preprocessed.
-   - The processed images are saved to a directory (`/kaggle/working/preprocessed_images`) within the Kaggle environment.
-   - The output image size is configurable via the `output_size` parameter, which is set to 2000 pixels in this case.
 
 The Color Contrast Preprocessing step enhances the quality of the retinal images by improving their contrast, trimming unnecessary margins, and resizing them to a consistent size. The images are then saved in a designated folder and can be uploaded to Kaggle as a dataset for further analysis or model training. This ensures that the images are properly prepared for downstream tasks, such as classification or segmentation models.
 
 
 
 ### Yolo OD Segmentation Model Training
+The Dataset used to train YOLOv8 model for segmentation is taken from Roboflow. [Here](https://universe.roboflow.com/learn-through-experiments/glaucoma-detection-hhiwc/dataset/1)
 This section describes how the YOLOv8 model is trained for Optic Disk (OD) segmentation using retinal images. The model is designed to detect and segment the optic disk region in fundus images, which is a key task in glaucoma detection.
 
 1. **Preparing Label Files**
@@ -150,17 +131,11 @@ After training the YOLOv8 model for optic disk (OD) segmentation, the next step 
    - The trained YOLOv8 model is loaded using the `ultralytics` library. The path to the trained model's weights is provided (`best.pt`), which contains the model that has been fine-tuned for optic disk detection.
    - The model is configured to run inference on new images, detecting the optic disk in each test image.
 
-2. **Inference on Test Images**
-   - The test images are located in the `Glaucoma/test/images` directory. For each test image, the model performs inference to detect the optic disk.
-   - The `model(image_path)` function is used to perform detection, and the results include bounding boxes with coordinates for the detected optic disk (OD).
-   - The inference results also include the class ID (`0` for OD) and confidence score for each detection.
-
-3. **Annotating and Saving the Results**
+2. **Annotating and Saving the Results**
    - For each test image, the bounding boxes detected by the model are drawn on the image using OpenCV. 
    - The bounding boxes are drawn with green rectangles, and the class ID and confidence score are displayed as text on the image.
-   - The annotated images are saved to the `Glaucoma/test/predictions` directory, with filenames prefixed with `pred_` to distinguish the output from the original images.
 
-4. **ROI Preprocessing**
+3. **ROI Preprocessing**
    - The bounding box coordinates for the optic disk are extracted from the inference results. These coordinates define the Region of Interest (ROI) in the image.
    - The processed images with the annotated bounding boxes can be used for further analysis or training other models for glaucoma detection or optic disk segmentation.
 
