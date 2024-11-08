@@ -1,9 +1,14 @@
 # Glaucoma Classification
+### Group Members Group 7
+- 21BDS008 - Ayush Jain
+- 21BDS020 - Harsh Gupta
+- 21BDS022 - Imroz Khan
+- 21BDS065 - Sourish Joshi
+- 21BDS066 - Tanmay Mahajan
 
 Glaucoma is one of the leading causes of irreversible blindness and typically advances with no apparent symptoms until it progresses to cause obvious loss of vision. Its prevention from further progressing requires early detection using imaging methods such as color fundus photographs (CFPs). For example, CFPs are very important since they may have the capability to depict important aspects of glaucoma, including neuro-retinal rim thinning and optic disc hemorrhages.
 
 The availability of such a large and critically annotated dataset for over 110,000 fundus photographs provides an important opportunity. This work outlines the main objective of developing a binary classification model between referable glaucoma and no-referable glaucoma. It would make automatic systems possible for early glaucoma detection that accelerates diagnostic efficiency and obviates preventable blindness.
-
 
 ## How to Run Inference Model
 
