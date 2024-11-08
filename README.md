@@ -1,4 +1,4 @@
-# Glaucoma Classification
+# JustRAIGS Glaucoma Classification
 ### Group Members Group 7
 - 21BDS008 - Ayush Jain
 - 21BDS020 - Harsh Gupta
@@ -33,7 +33,12 @@ By following these steps, you'll be able to use the trained model to make predic
 
 
 ## Dataset
-The JustRAIGS dataset comprises over 110,000 carefully annotated fundus photographs from approximately 60,000 screenees. It includes a training subset of 101,442 gradable images and a test subset of 9,741 images, categorized into "referable glaucoma" and "no referable glaucoma." Due to resource limitations, our analysis focuses on a subset of this data: 2,623 images labeled as "referable glaucoma" and 5,110 images labeled as "no referable glaucoma." Each "referable glaucoma" image is further annotated with up to ten distinct glaucomatous features, making this dataset highly valuable for developing and evaluating AI algorithms for glaucoma screening.
+The JustRAIGS dataset comprises over 110,000 carefully annotated fundus photographs from approximately 60,000 screenees. It includes a training subset of 101,442 gradable images and a test subset of 9,741 images, categorized into "referable glaucoma" and "no referable glaucoma." Due to resource limitations, our analysis focuses on a subset of this data: 2,623 images labeled as "referable glaucoma" and 5,110 images labeled as "no referable glaucoma." Each "referable glaucoma" image is further annotated with up to ten distinct glaucomatous features, making this dataset highly valuable for developing and evaluating AI algorithms for glaucoma screening.  
+[JustRAIGS Challenge](https://justraigs.grand-challenge.org/)  
+[JustRAIGS Dataset](https://zenodo.org/records/10035093)  
+[Without ROI Preprocessed Dataset](https://www.kaggle.com/datasets/mahajantm/preprocessed-image-hda-without-roi/data)  
+[With ROI Preprocessed Dataset](https://www.kaggle.com/datasets/mahajantm/roi-images-hda/data)  
+
 
 ## Methodology
 ![HDA-Glaucoma-Methodology.jpg](Images/HDA-Glaucoma-Methodology.jpg)
