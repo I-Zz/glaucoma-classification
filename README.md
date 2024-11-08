@@ -28,6 +28,7 @@ By following these steps, you'll be able to use the trained model to make predic
 
 
 ## Dataset
+The JustRAIGS dataset comprises over 110,000 carefully annotated fundus photographs from approximately 60,000 screenees. It includes a training subset of 101,442 gradable images and a test subset of 9,741 images, categorized into "referable glaucoma" and "no referable glaucoma." Due to resource limitations, our analysis focuses on a subset of this data: 2,623 images labeled as "referable glaucoma" and 5,110 images labeled as "no referable glaucoma." Each "referable glaucoma" image is further annotated with up to ten distinct glaucomatous features, making this dataset highly valuable for developing and evaluating AI algorithms for glaucoma screening.
 
 ## Preprocessing
 
@@ -200,7 +201,25 @@ We utilize the Vision Transformer (ViT) model (`vit_b_16`) pretrained on ImageNe
   - The model is trained for up to 100 epochs with early stopping if no improvement is seen in the validation AUC for 5 consecutive epochs.
   - The optimizer used is **AdamW**, and a learning rate scheduler helps fine-tune the model.
 
-Metrics like **AUC**, **F1 score**, **Precision**, and **Recall** are tracked during training to evaluate performance. Early stopping ensures the model does not overfit.
+
+#### Metrics
+Throughout the training process, key performance metrics including the AUC, F1 score, Precision, and Recall are monitored. These metrics provide a comprehensive understanding of the model’s performance and its predictive accuracy.
+
+#### Visualizations
+Training progress and results are visually represented through various charts, illustrating the dynamics of model training and validation. Below are the key visualizations:
+
+![Training and Validation Loss](https://github.com/user-attachments/assets/cfd4e839-c683-47ef-a0e9-0288ed3b4ea0)
+
+
+![AUC Progress](https://github.com/user-attachments/assets/1d1838bf-ca59-411a-ae30-3965cf1d1e6d)
+
+
+![Precision and Recall Metrics](https://github.com/user-attachments/assets/9495ada3-7ae2-4709-87d1-8667ffa1d9e9)
+
+
+![F1 Score Tracking](https://github.com/user-attachments/assets/73b1d479-3582-4545-8064-bc25990ac527)
+
+
 
 ---
 
