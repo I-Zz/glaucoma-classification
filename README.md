@@ -251,13 +251,34 @@ The model is loaded from the **best saved checkpoint** from the training phase a
 - **0** (Non-Referable Glaucoma, NRG)
 - **1** (Referable Glaucoma, RG)
 
-## Metrics Comparison of With and Without ROI Preprocessing Models
+## Model Performance Metrics Comparison
+We trained two models to classify eye fundus images into **Referable Glaucoma (RG)** and **Non-Referable Glaucoma (NRG)** classes:
+
+1. **Model without ROI Preprocessed Dataset**:
+   - The model was trained on the original dataset without any region-of-interest (ROI) preprocessing.
+   - The model showed poor performance, often predicting only one class for all input images. This resulted in an accuracy of **50%** (random prediction of the two classes).
+
+2. **Model with ROI Preprocessed Dataset**:
+   - The second model was trained on a dataset where region-of-interest (ROI) preprocessing was applied.
+   - This model showed a significant improvement, achieving an **accuracy of 86.84%**.
+
+The two images below represent the performance metrics of the models trained on the two datasets:
 <p align="center">
-  <img src="Images/Results/preprocessing-better-model-results.png" alt="Metrics without ROI PreProcessing" width="48%">
-  <img src="Images/Results/preprocessing-better-model-results.png" alt="Metrics with ROI PreProcessing" width="48%">
+  <img src="Images/Results/without-roi-preprocess-results.png" alt="Metrics without ROI PreProcessing" width="48%">
+  <br>
+  <span>Metrics without ROI PreProcessing</span>
 </p>
 
+<p align="center">
+  <img src="Images/Results/with-roi-preprocess-results.png" alt="Metrics with ROI PreProcessing" width="48%">
+  <br>
+  <span>Metrics with ROI PreProcessing</span>
+</p>
+
+### Final Confusion Matrix for the Model Trained with ROI Preprocessed Dataset
 
 ![confusion-matrix.png](Images/Results/confusion-matrix.png)
+
+This confusion matrix highlights the number of true positives, true negatives, false positives, and false negatives, providing insights into the classification performance of the model.
 
 ---
