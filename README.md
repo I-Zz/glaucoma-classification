@@ -30,6 +30,11 @@ By following these steps, you'll be able to use the trained model to make predic
 ## Dataset
 The JustRAIGS dataset comprises over 110,000 carefully annotated fundus photographs from approximately 60,000 screenees. It includes a training subset of 101,442 gradable images and a test subset of 9,741 images, categorized into "referable glaucoma" and "no referable glaucoma." Due to resource limitations, our analysis focuses on a subset of this data: 2,623 images labeled as "referable glaucoma" and 5,110 images labeled as "no referable glaucoma." Each "referable glaucoma" image is further annotated with up to ten distinct glaucomatous features, making this dataset highly valuable for developing and evaluating AI algorithms for glaucoma screening.
 
+## Methodology
+![HDA-Glaucoma-Methodology.jpg](Images/HDA-Glaucoma-Methodology.jpg)
+
+
+
 ## Preprocessing
 
 ### CSV Preprocessing
@@ -209,14 +214,14 @@ Throughout the training process, key performance metrics including the AUC, F1 s
 Training progress and results are visually represented through various charts, illustrating the dynamics of model training and validation. Below are the key visualizations:
 
 <p align="center">
-     <img src="https://github.com/user-attachments/assets/1d1838bf-ca59-411a-ae30-3965cf1d1e6d" alt="AUC Progress" width="48%">
-  <img src="https://github.com/user-attachments/assets/cfd4e839-c683-47ef-a0e9-0288ed3b4ea0" alt="Training and Validation Loss" width="48%">
+     <img src="Images/Training Graphs/validation-AUC-over-epochs.png" alt="AUC Progress" width="48%">
+  <img src="Images/Training Graphs/training-and-validation-loss.png" alt="Training and Validation Loss" width="48%">
 
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/9495ada3-7ae2-4709-87d1-8667ffa1d9e9" alt="Precision and Recall Metrics" width="48%">
-  <img src="https://github.com/user-attachments/assets/73b1d479-3582-4545-8064-bc25990ac527" alt="F1 Score Tracking" width="48%">
+  <img src="Images/Training Graphs/validation-precision-and-recall-over-epochs.png" alt="Precision and Recall Metrics" width="48%">
+  <img src="Images/Training Graphs/validation-F1-Score-over-Epochs.png" alt="F1 Score Tracking" width="48%">
 </p>
 
 
