@@ -251,22 +251,13 @@ The model is loaded from the **best saved checkpoint** from the training phase a
 - **0** (Non-Referable Glaucoma, NRG)
 - **1** (Referable Glaucoma, RG)
 
-### Metrics
-
-The performance of the model on the test dataset is evaluated using the following metrics:
-- **Accuracy**: The proportion of correctly classified images.
-- **Precision**: The proportion of true positives out of all predicted positives.
-- **Recall**: The proportion of true positives out of all actual positives.
-- **F1 Score**: The harmonic mean of precision and recall.
-- **AUC-ROC**: The area under the receiver operating characteristic curve, a measure of the model's ability to distinguish between the two classes.
-
-![WhatsApp Image 2024-11-08 at 12 50 03](https://github.com/user-attachments/assets/8be9c698-d945-486a-8a77-f0d9c04c4805)
+## Metrics Comparison of With and Without ROI Preprocessing Models
+<p align="center">
+  <img src="Images/Results/preprocessing-better-model-results.png" alt="Metrics without ROI PreProcessing" width="48%">
+  <img src="Images/Results/preprocessing-better-model-results.png" alt="Metrics with ROI PreProcessing" width="48%">
+</p>
 
 
-### Final Evaluation
-
-The final performance metrics and the confusion matrix are displayed at the end of the testing phase. The test set performance is indicative of the model's generalization ability to unseen data.
-![WhatsApp Image 2024-11-08 at 12 50 23](https://github.com/user-attachments/assets/f7bd49eb-3ad5-453e-ad2a-e91ece3a765d)
-
+![confusion-matrix.png](Images/Results/confusion-matrix.png)
 
 ---
