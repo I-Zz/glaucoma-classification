@@ -208,16 +208,18 @@ Throughout the training process, key performance metrics including the AUC, F1 s
 #### Visualizations
 Training progress and results are visually represented through various charts, illustrating the dynamics of model training and validation. Below are the key visualizations:
 
-![Training and Validation Loss](https://github.com/user-attachments/assets/cfd4e839-c683-47ef-a0e9-0288ed3b4ea0)
+<p align="center">
+     <img src="https://github.com/user-attachments/assets/1d1838bf-ca59-411a-ae30-3965cf1d1e6d" alt="AUC Progress" width="48%">
+  <img src="https://github.com/user-attachments/assets/cfd4e839-c683-47ef-a0e9-0288ed3b4ea0" alt="Training and Validation Loss" width="48%">
+
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9495ada3-7ae2-4709-87d1-8667ffa1d9e9" alt="Precision and Recall Metrics" width="48%">
+  <img src="https://github.com/user-attachments/assets/73b1d479-3582-4545-8064-bc25990ac527" alt="F1 Score Tracking" width="48%">
+</p>
 
 
-![AUC Progress](https://github.com/user-attachments/assets/1d1838bf-ca59-411a-ae30-3965cf1d1e6d)
-
-
-![Precision and Recall Metrics](https://github.com/user-attachments/assets/9495ada3-7ae2-4709-87d1-8667ffa1d9e9)
-
-
-![F1 Score Tracking](https://github.com/user-attachments/assets/73b1d479-3582-4545-8064-bc25990ac527)
 
 
 
@@ -253,10 +255,13 @@ The performance of the model on the test dataset is evaluated using the followin
 - **F1 Score**: The harmonic mean of precision and recall.
 - **AUC-ROC**: The area under the receiver operating characteristic curve, a measure of the model's ability to distinguish between the two classes.
 
-Additionally, a **confusion matrix** is plotted to visualize the model's classification performance across the two classes, helping to identify misclassifications.
+![WhatsApp Image 2024-11-08 at 12 50 03](https://github.com/user-attachments/assets/8be9c698-d945-486a-8a77-f0d9c04c4805)
+
 
 ### Final Evaluation
 
 The final performance metrics and the confusion matrix are displayed at the end of the testing phase. The test set performance is indicative of the model's generalization ability to unseen data.
+![WhatsApp Image 2024-11-08 at 12 50 23](https://github.com/user-attachments/assets/f7bd49eb-3ad5-453e-ad2a-e91ece3a765d)
+
 
 ---
